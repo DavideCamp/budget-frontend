@@ -9,75 +9,76 @@ import './App.css';
 import { formatCurrency, SummaryMetrics, TransactionTable } from './components/TransactionTable';
 import { CategoryChartProps, CategoryData, Transaction } from './restapi/types';
 import { PeriodSelector } from './components/PeriodSelector';
+import Chatbot from './components/chatbot/Chat';
 
 // Configuration
 const API_BASE_URL = 'http://localhost:8000/api/';
 
 // Enhanced Category Chart Component with better responsiveness
 const CategoryChart: React.FC<CategoryChartProps> = ({ data }) => {
-    // Vibrant color palette that works well together
-    const COLORS = [
-      '#3498db', '#2ecc71', '#f1c40f', '#e74c3c', '#9b59b6', 
-      '#1abc9c', '#f39c12', '#d35400', '#8e44ad', '#16a085'
-    ];
+  // Vibrant color palette that works well together
+  const COLORS = [
+    '#3498db', '#2ecc71', '#f1c40f', '#e74c3c', '#9b59b6',
+    '#1abc9c', '#f39c12', '#d35400', '#8e44ad', '#16a085'
+  ];
 
-    if (!data || data.length === 0) {
-        return (
-          <div className="card chart-container flex-center">
-            <p>No expense data for this period.</p>
-          </div>
-        );
-    }
-
+  if (!data || data.length === 0) {
     return (
-        <div className="card chart-container">
-            <h2>Expenses by Category</h2>
-            <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                    <Pie
-                        data={data}
-                        cx="50%"
-                        cy="50%"
-                        labelLine={true}
-                        outerRadius={80}
-                        innerRadius={30} // Adding an inner radius for a donut chart look
-                        fill="#8884d8"
-                        dataKey="value"
-                        nameKey="name"
-                        label={({ name, percent }: { name: string, percent: number }) => 
-                          // Only show label for larger segments to avoid clutter
-                          percent > 0.05 ? `${name} (${(percent * 100).toFixed(0)}%)` : ''
-                        }
-                        paddingAngle={2} // Add spacing between segments
-                    >
-                        {data.map((entry, index) => (
-                            <Cell 
-                              key={`cell-${index}`} 
-                              fill={COLORS[index % COLORS.length]} 
-                              stroke="#fff"
-                              strokeWidth={1}
-                            />
-                        ))}
-                    </Pie>
-                    <Tooltip 
-                      formatter={(value: number) => formatCurrency(value)} 
-                      contentStyle={{ 
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                        borderRadius: '8px',
-                        border: 'none',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
-                      }}
-                    />
-                    <Legend 
-                      layout="horizontal" 
-                      verticalAlign="bottom" 
-                      align="center"
-                      wrapperStyle={{ paddingTop: '20px' }}
-                    />
-                </PieChart>
-            </ResponsiveContainer>
-        </div>
+      <div className="card chart-container flex-center">
+        <p>No expense data for this period.</p>
+      </div>
     );
+  }
+
+  return (
+    <div className="card chart-container">
+      <h2>Expenses by Category</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={true}
+            outerRadius={80}
+            innerRadius={30} // Adding an inner radius for a donut chart look
+            fill="#8884d8"
+            dataKey="value"
+            nameKey="name"
+            label={({ name, percent }: { name: string, percent: number }) =>
+              // Only show label for larger segments to avoid clutter
+              percent > 0.05 ? `${name} (${(percent * 100).toFixed(0)}%)` : ''
+            }
+            paddingAngle={2} // Add spacing between segments
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+                stroke="#fff"
+                strokeWidth={1}
+              />
+            ))}
+          </Pie>
+          <Tooltip
+            formatter={(value: number) => formatCurrency(value)}
+            contentStyle={{
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              borderRadius: '8px',
+              border: 'none',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+            }}
+          />
+          <Legend
+            layout="horizontal"
+            verticalAlign="bottom"
+            align="center"
+            wrapperStyle={{ paddingTop: '20px' }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
 };
 
 // New component for savings trend (placeholder for now)
@@ -110,7 +111,7 @@ const App: React.FC = () => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768);
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -122,12 +123,12 @@ const App: React.FC = () => {
         const response = await axios.get<Transaction[]>(`${API_BASE_URL}transactions/`);
         const years = Array.from(new Set(response.data.map(tx => getYear(parseISO(tx.date))))).sort((a, b) => b - a);
         if (years.length > 0) {
-            setAvailableYears(years);
-            if (!years.includes(selectedYear)) {
-                setSelectedYear(years[0]);
-            }
+          setAvailableYears(years);
+          if (!years.includes(selectedYear)) {
+            setSelectedYear(years[0]);
+          }
         } else {
-            setAvailableYears([currentYear]);
+          setAvailableYears([currentYear]);
         }
       } catch (err) {
         console.error("Error fetching years:", err);
@@ -150,7 +151,7 @@ const App: React.FC = () => {
             date__month: selectedMonth,
           }
         });
-        const sortedTransactions = response.data.sort((a, b) => 
+        const sortedTransactions = response.data.sort((a, b) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
         setTransactions(sortedTransactions);
@@ -192,9 +193,9 @@ const App: React.FC = () => {
       .sort((a, b) => b.value - a.value);
 
     return {
-      summary: { 
-        income: totalIncome, 
-        expense: totalExpenses, 
+      summary: {
+        income: totalIncome,
+        expense: totalExpenses,
         savings: netSavings,
         savingsRate: savingsRate
       },
@@ -210,6 +211,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
+
       <header className="app-header">
         <h1>Budget Dashboard</h1>
         <div className="period-display">{formattedPeriod}</div>
@@ -225,13 +227,14 @@ const App: React.FC = () => {
         />
       </div>
 
+
       {loading && (
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading your financial data...</p>
         </div>
       )}
-      
+
       {error && (
         <div className="error-message">
           <i className="error-icon">⚠️</i>
@@ -244,6 +247,9 @@ const App: React.FC = () => {
           <div className="transactions-container">
             <h2>Recent Transactions</h2>
             <TransactionTable transactions={transactions} />
+          </div>
+          <div>
+            <Chatbot />
           </div>
 
           <div className="summary-section">
@@ -259,7 +265,8 @@ const App: React.FC = () => {
             <SavingsTrend />
           </div>
 
-          
+
+
         </>
       )}
 
