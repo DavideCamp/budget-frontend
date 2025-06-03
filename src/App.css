@@ -9,8 +9,13 @@
   --danger-color: #e74c3c;
   --dark-text: #2c3e50;
   --light-text: #ecf0f1;
+  --muted-text: #5f6368;
   --card-bg: #ffffff;
   --background: #f5f7fa;
+  --muted-bg: #f8f9fa;
+  --neutral-bg: #ecf0f1;
+  --input-border: #e8eaed;
+  --input-border-hover: #d2d5db;
   --border-radius: 10px;
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
@@ -332,5 +337,25 @@ body {
   
   .app-header h1 {
     font-size: 1.75rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #2980b9;
+    --primary-dark: #1c5e86;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #c0392b;
+    --dark-text: #ecf0f1;
+    --light-text: #2c3e50;
+    --muted-text: #bdc3c7;
+    --card-bg: #2c3e50;
+    --background: #1a252f;
+    --muted-bg: #34495e;
+    --neutral-bg: #3d566e;
+    --input-border: #566573;
+    --input-border-hover: #808b96;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   }
 }
