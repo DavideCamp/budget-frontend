@@ -9,10 +9,10 @@
   }
   
   .metric-card {
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
     padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow);
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -26,7 +26,7 @@
   .metric-card h3 {
     font-size: 1rem;
     font-weight: 500;
-    color: #5f6368;
+    color: var(--muted-text);
     margin-bottom: 10px;
   }
   
@@ -37,27 +37,27 @@
   }
   
   .metric-card.income {
-    border-top: 4px solid #2ecc71;
+    border-top: 4px solid var(--success-color);
   }
-  
+
   .metric-card.expense {
-    border-top: 4px solid #e74c3c;
+    border-top: 4px solid var(--danger-color);
   }
-  
+
   .metric-card.savings {
-    border-top: 4px solid #3498db;
+    border-top: 4px solid var(--primary-color);
   }
   
   .metric-card.income .metric-value {
-    color: #2ecc71;
+    color: var(--success-color);
   }
-  
+
   .metric-card.expense .metric-value {
-    color: #e74c3c;
+    color: var(--danger-color);
   }
-  
+
   .metric-card.savings .metric-value {
-    color: #3498db;
+    color: var(--primary-color);
   }
   
   .metric-indicator {
@@ -68,40 +68,40 @@
   }
   
   .metric-indicator.positive {
-    color: #2ecc71;
+    color: var(--success-color);
   }
-  
+
   .metric-indicator.negative {
-    color: #e74c3c;
+    color: var(--danger-color);
   }
   
   .expense-ratio, .savings-rate {
     font-size: 0.9rem;
-    color: #5f6368;
+    color: var(--muted-text);
     opacity: 0.8;
   }
   
   .savings-progress {
     margin-top: 15px;
     height: 6px;
-    background-color: #ecf0f1;
+    background-color: var(--neutral-bg);
     border-radius: 3px;
     overflow: hidden;
   }
   
   .savings-progress-bar {
     height: 100%;
-    background-color: #3498db;
+    background-color: var(--primary-color);
     border-radius: 3px;
     transition: width 0.5s ease;
   }
   
   /* Transaction Table Styles */
   .transaction-container {
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
     padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow);
     margin-bottom: 30px;
   }
   
@@ -117,15 +117,15 @@
   .transaction-header h2 {
     font-size: 1.5rem;
     font-weight: 500;
-    color: #2c3e50;
+    color: var(--dark-text);
     margin: 0;
   }
   
   .transaction-count {
     font-size: 0.9rem;
-    color: #5f6368;
+    color: var(--muted-text);
     padding: 5px 12px;
-    background-color: #f8f9fa;
+    background-color: var(--muted-bg);
     border-radius: 16px;
   }
   
@@ -137,8 +137,8 @@
   .transaction-table th {
     text-align: left;
     padding: 12px 16px;
-    background-color: #f8f9fa;
-    color: #5f6368;
+    background-color: var(--muted-bg);
+    color: var(--muted-text);
     font-weight: 500;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -166,11 +166,11 @@
   }
   
   .positive-value {
-    color: #2ecc71;
+    color: var(--success-color);
   }
-  
+
   .negative-value {
-    color: #e74c3c;
+    color: var(--danger-color);
   }
   
   /* Transaction row styles */
@@ -191,8 +191,8 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background-color: #3498db;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--light-text);
     font-size: 0.7rem;
     padding: 2px 6px;
     border-radius: 10px;
@@ -203,10 +203,10 @@
   .category-badge {
     display: inline-block;
     padding: 4px 10px;
-    background-color: #f8f9fa;
+    background-color: var(--muted-bg);
     border-radius: 16px;
     font-size: 0.85rem;
-    color: #5f6368;
+    color: var(--muted-text);
   }
   
   /* No data state */
@@ -216,9 +216,9 @@
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     text-align: center;
   }
   
@@ -241,7 +241,7 @@
     padding: 10px 0;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #5f6368;
+    color: var(--muted-text);
     text-transform: capitalize;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     margin-bottom: 10px;
@@ -256,11 +256,11 @@
   }
   
   .transaction-card.income-transaction {
-    border-left-color: #2ecc71;
+    border-left-color: var(--success-color);
   }
-  
+
   .transaction-card.expense-transaction {
-    border-left-color: #e74c3c;
+    border-left-color: var(--danger-color);
   }
   
   .transaction-main {
@@ -280,7 +280,7 @@
   
   .transaction-account {
     font-size: 0.85rem;
-    color: #5f6368;
+    color: var(--muted-text);
   }
   
   .transaction-amount {
@@ -299,7 +299,7 @@
   }
   
   .view-all-btn {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 10px 24px;
@@ -308,9 +308,9 @@
     cursor: pointer;
     transition: all 0.2s ease;
   }
-  
+
   .view-all-btn:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }

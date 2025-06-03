@@ -1,10 +1,10 @@
 /* Period Selector Styles */
 
 .period-selector {
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
     padding: 16px 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--box-shadow);
     margin-bottom: 24px;
   }
   
@@ -24,7 +24,7 @@
   }
   
   .period-nav-btn {
-    background-color: #f5f7fa;
+    background-color: var(--muted-bg);
     border: none;
     border-radius: 8px;
     width: 36px;
@@ -37,7 +37,7 @@
   }
   
   .period-nav-btn:hover {
-    background-color: #e8eaed;
+    background-color: var(--input-border-hover);
   }
   
   .period-nav-btn:disabled {
@@ -46,7 +46,7 @@
   }
   
   .period-today-btn {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 8px;
@@ -59,12 +59,12 @@
   }
   
   .period-today-btn:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-dark);
   }
   
   .nav-icon {
     font-size: 1.1rem;
-    color: #5f6368;
+    color: var(--muted-text);
   }
   
   /* Select boxes */
@@ -82,7 +82,7 @@
   
   .select-container label {
     font-size: 0.8rem;
-    color: #5f6368;
+    color: var(--muted-text);
     font-weight: 500;
   }
   
@@ -93,24 +93,24 @@
   
   .custom-select select {
     appearance: none;
-    background-color: #f5f7fa;
-    border: 1px solid #e8eaed;
+    background-color: var(--muted-bg);
+    border: 1px solid var(--input-border);
     border-radius: 8px;
     padding: 8px 36px 8px 12px;
     font-size: 0.95rem;
-    color: #2c3e50;
+    color: var(--dark-text);
     cursor: pointer;
     width: 100%;
     transition: all 0.2s ease;
   }
   
   .custom-select select:hover {
-    border-color: #d2d5db;
-    background-color: #e8eaed;
+    border-color: var(--input-border-hover);
+    background-color: var(--input-border-hover);
   }
   
   .custom-select select:focus {
-    border-color: #3498db;
+    border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   }
@@ -122,7 +122,7 @@
     transform: translateY(-50%);
     pointer-events: none;
     font-size: 0.7rem;
-    color: #5f6368;
+    color: var(--muted-text);
   }
   
   .month-select {
@@ -138,7 +138,7 @@
     display: none;
     font-size: 1.1rem;
     font-weight: 500;
-    color: #2c3e50;
+    color: var(--dark-text);
     text-align: center;
     margin-top: 16px;
     text-transform: capitalize;
